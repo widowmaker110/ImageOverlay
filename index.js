@@ -15,24 +15,16 @@ $(document).ready(function () {
 	var canvas = document.getElementById("canvas");
 	var ctx = canvas.getContext("2d");
 
-	// images
+	// base image hieght + width
+	var baseHeight;
+	var baseWidth;
+	
+	// Images
 	var img1;
 	var img2;
 
-	// counter
+	// Counter
 	var imagesLoaded = 0;
-	
-	function main() {
-	    imagesLoaded += 1;
-
-	    if(imagesLoaded == 2) {
-	        // composite now
-	        ctx.drawImage(img1, 0, 0);
-
-	        ctx.globalAlpha = 0.5;
-	        ctx.drawImage(img2, 0, 0);
-	    }
-	}
 
 	// Converts canvas to an image
 	function convertCanvasToImage(canvas) {
@@ -43,11 +35,47 @@ $(document).ready(function () {
 	}
 
 	// download image from the internet
-	function loadImage(src, onload) {
+	function loadImage(src) {
 	    var img = new Image();
 	    img.onload = onload;
 	    img.src = src;
 		return img;
+	}
+	
+	// help from: http://www.ajaxblender.com/howto-resize-image-proportionally-using-javascript.html
+	function scaleSize(maxW, maxH, currW, currH){
+
+		var ratio = currH / currW;
+
+		if(currW >= maxW && ratio <= 1){
+			currW = maxW;
+			currH = currW * ratio;
+		} else if(currH >= maxH){
+			currH = maxH;
+			currW = currH / ratio;
+		}
+
+		return [currW, currH];
+	}
+	
+	function drawOverlay()
+	{
+		var maxHeight = img1.height;
+		var maxWidth = img1.width;
+		
+		// first resize canvas to fit the base image
+		canvas.width  = maxHeight;
+		canvas.height = maxWidth;
+		
+		// resize upper image to fit base image
+		var newSize = scaleSize(maxWidth, maxHeight, img2.width, img2.height);
+		img2.height = newSize[1];
+		img2.width = newSize[0];
+				
+		// finally, draw overlay
+		ctx.drawImage(img1, 0, 0, img1.height, img1.height * (img1.height/img1.width));
+		ctx.globalAlpha = 0.5;
+		ctx.drawImage(img2, 0, 0, img1.height, img1.height * (img1.height/img1.width));
 	}
 	
     function readURL(input, target) {
@@ -57,11 +85,12 @@ $(document).ready(function () {
             reader.onload = function (e) {
                 $(target).attr('src', e.target.result);
 				if(target.indexOf("1") > -1)
-					img1 = loadImage(e.target.result, main);
-            	else
-					img2 = loadImage(e.target.result, main);
-				
-				console.log("called");
+					img1 = loadImage(e.target.result);
+            	// on second load, draw the canvas
+				else {
+					img2 = loadImage(e.target.result);
+					drawOverlay();
+				}
 			}
             
             reader.readAsDataURL(input.files[0]);

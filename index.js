@@ -16,8 +16,8 @@ $(document).ready(function () {
 	var ctx = canvas.getContext("2d");
 
 	// images
-	var img1 = loadImage('http://upload.wikimedia.org/wikipedia/en/2/24/Lenna.png', main);
-	var img2 = loadImage('http://introcs.cs.princeton.edu/java/31datatype/peppers.jpg', main);
+	var img1;
+	var img2;
 
 	// counter
 	var imagesLoaded = 0;
@@ -56,7 +56,13 @@ $(document).ready(function () {
             
             reader.onload = function (e) {
                 $(target).attr('src', e.target.result);
-            }
+				if(target.indexOf("1") > -1)
+					img1 = loadImage(e.target.result, main);
+            	else
+					img2 = loadImage(e.target.result, main);
+				
+				console.log("called");
+			}
             
             reader.readAsDataURL(input.files[0]);
         }

@@ -1,52 +1,61 @@
 <!DOCTYPE html>
 <html>
-<!--  http://stackoverflow.com/questions/7283065/canvas-combing-two-images-return-one-img-html-object -->
 	<head>
-		<style>
-		.imageWrapper {
-			position: relative;
-		}	
-		.overlayImage {
-			position: absolute;
-			top: 0;
-			left: 0;
-		}
-		</style>
+		<title>Image Overlay</title>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 	</head>
 
 	<body>
-<canvas id="canvas"></canvas>
-
-<script type="text/javascript">
-var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d");
-
-var img1 = loadImage('http://upload.wikimedia.org/wikipedia/en/2/24/Lenna.png', main);
-var img2 = loadImage('http://introcs.cs.princeton.edu/java/31datatype/peppers.jpg', main);
-
-var imagesLoaded = 0;
-function main() {
-    imagesLoaded += 1;
-
-    if(imagesLoaded == 2) {
-        // composite now
-        ctx.drawImage(img1, 0, 0);
-
-        ctx.globalAlpha = 0.5;
-        ctx.drawImage(img2, 0, 0);
-    }
-}
-
-function loadImage(src, onload) {
-    // http://www.thefutureoftheweb.com/blog/image-onload-isnt-being-called
-    var img = new Image();
-
-    img.onload = onload;
-    img.src = src;
-
-    return img;
-}
-</script>
+		
+		<!-- Heading -->
+		<div class="container">
+			<div class="row">
+				<div class="jumbotron">
+					<h1 class="jumbotronHeading">Image Overlay Program</h1>
+		    		<p class="jumbotronHeading">This program converts two images into one by overlaying the top layer on top of the buttom image.</p>
+				</div>
+			</div>
+		
+		<!-- Images -->
+		<div class="row">	
+			<div class="col-md-4">
+				
+				<center>
+					<p>1. Base (bottom) image</p>
+					<img height="200" style="margin-bottom:10px;" width="200" src="placeholder.svg"/>
+        			<br>
+					<button type="button" class="btn btn-lg btn-default">Upload</button>
+				</center>	
+				
+			</div>
+			
+			<div class="col-md-4">
+				
+				<center>
+					<p>2. Upper (top) image</p>
+					<img height="200" style="margin-bottom:10px;" width="200" src="placeholder.svg"/>
+        			<br>
+					<button type="button" class="btn btn-lg btn-default">Upload</button>
+				</center>
+			
+			</div>
+			
+			<div class="col-md-4">
+				
+				<center>
+					<p>3. Result Image</p>
+					<canvas style="margin-bottom:5px;" id="canvas"></canvas>
+        			<br>
+					<button type="button" class="btn btn-lg btn-default">Download</button>
+				</center>
+			</div>	
+		</div>
 	</body>
+
+	<!-- Javascript loading -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="index.js"></script>
 
 </html>

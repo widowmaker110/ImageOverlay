@@ -5,10 +5,7 @@
 * Author: Alexander Miller, 2016
 *
 * This Javascript file converts two images into one by overlaying one and adjusting the transparency of the top one.
-*/
-
-// uploading: http://jsbin.com/imonub/7/edit?html,css,output
- 
+*/ 
 $(document).ready(function () {
 	
 	// Canvas Global
@@ -41,8 +38,7 @@ $(document).ready(function () {
 	    img.src = src;
 		return img;
 	}
-	
-	// help from: http://www.ajaxblender.com/howto-resize-image-proportionally-using-javascript.html
+	 
 	function scaleSize(maxW, maxH, currW, currH){
 
 		var ratio = currH / currW;
@@ -76,6 +72,9 @@ $(document).ready(function () {
 		ctx.drawImage(img1, 0, 0, img1.height, img1.height * (img1.height/img1.width));
 		ctx.globalAlpha = 0.5;
 		ctx.drawImage(img2, 0, 0, img1.height, img1.height * (img1.height/img1.width));
+		
+		// enable download option
+		$("#download_button").prop('disabled', false);
 	}
 	
     function readURL(input, target) {
@@ -103,4 +102,8 @@ $(document).ready(function () {
 	$("#file2").change(function(){
 		readURL(this, "#Image_2");
 	});
+	
+	$('[data-toggle="tooltip"]').tooltip(); 
+	
+	$("#download_button").prop('disabled', true);
 });

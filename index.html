@@ -23,7 +23,7 @@
 			<div class="col-md-6">
 				
 				<center>
-					<p>1. Base (bottom) image</p>
+					<p>1. Base (bottom) image <span data-toggle="tooltip" title="This image will be placed below and maintain full transparency. For instance, your profile picture should be loaded into this one in order to put an overlay on it.">&#10067;</span></p>
 					<img height="200" id="Image_1" style="margin-bottom:10px;" width="200" src="placeholder.svg"/>
         			<br>
 					<input style="padding-left:126px;" id="file" type="file" name="files[]"></input>
@@ -34,7 +34,7 @@
 			<div class="col-md-6">
 				
 				<center>
-					<p>2. Upper (top) image</p>
+					<p>2. Upper (top) image <span data-toggle="tooltip" title="This image will be placed above and transparency will be subject to change. For instance, if you want to give your profile picture an overlay, this is where you would put the overlay.">&#10067;</span></p>
 					<img height="200" id="Image_2" style="margin-bottom:10px;" width="200" src="placeholder.svg"/>
         			<br>
 					<input style="padding-left:126px;" id="file2" type="file" name="files[]"></input>
@@ -43,19 +43,34 @@
 			</div>
 		</div>
 		
+		<hr>
 		<br>
 		<br>
-		<br>
+		
+		
 		<div class="row">
 			<div class="col-md-12">
 				
 				<center>
-					<p>3. Result Image</p>
+					<p>3. Result Image <span data-toggle="tooltip" title="This image will be the final result. This image is loaded when upper image is uploaded. For best results, please ensure base image is uploaded first than the upper image.">&#10067;</span></p>
 					<canvas height="200" width="200" style="margin-bottom:5px;" id="canvas"></canvas>
         			<br>
-					<button type="button" class="btn btn-lg btn-default">Download</button>
+					<button type="button" id="download_button" class="btn btn-lg btn-default">Download</button>
 				</center>
 			</div>	
+		</div>
+		
+		<br>
+		<br>
+		<br>
+		
+		<div class="well">
+			<p>This project was more easily made with these incredible resources:</p>
+			<a href="http://www.ajaxblender.com/howto-resize-image-proportionally-using-javascript.html" target="_blank">Ajaxblender</a>
+			&#8226; <a href="http://www.stackoverflow.com" target="_blank">Stackoverflow</a>
+			&#8226; <a href="http://jsbin.com/imonub/7/edit?html,css,output" target="_blank">Jsbin</a>
+			&#8226; <a href="http://getbootstrap.com/" target="_blank">Twitter Boostrap</a>
+			&#8226; <a href="https://jquery.com/" target="_blank">JQuery</a>
 		</div>
 	</body>
 

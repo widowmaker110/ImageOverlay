@@ -23,7 +23,7 @@
 				
 				<center>
 					<p>1. Base (bottom) image <span data-toggle="tooltip" title="This image will be placed below and maintain full transparency. For instance, your profile picture should be loaded into this one in order to put an overlay on it.">&#10067;</span></p>
-					<img height="200" id="Image_1" style="margin-bottom:10px;" width="200" src="placeholder.svg"/>
+					<img height="200" id="Image_1" style="margin-bottom:10px;" width="200" src="grey-07.jpg"/>
         			<br>
 					<input style="padding-left:126px;" id="file" type="file" name="files[]"></input>
 				</center>	
@@ -34,7 +34,7 @@
 				
 				<center>
 					<p>2. Upper (top) image <span data-toggle="tooltip" title="This image will be placed above and transparency will be subject to change. For instance, if you want to give your profile picture an overlay, this is where you would put the overlay.">&#10067;</span></p>
-					<img height="200" id="Image_2" style="margin-bottom:10px;" width="200" src="placeholder.svg"/>
+					<img height="200" id="Image_2" style="margin-bottom:10px;" width="200" src="grey-07.jpg"/>
         			<br>
 					<input style="padding-left:126px;" id="file2" type="file" name="files[]"></input>
 				</center>
@@ -50,7 +50,7 @@
 		<div class="row">
 			<div class="col-md-6">
 				<center>
-					<p>Transparency Level Adjustment <span data-toggle="tooltip" title="Here you can adjust the transparency level in the upper image only. For instance, clicking the up arrow will increase transparency (decrease solid visibility) while clicking the down arrow will decrease transparency (increasing upper image visibility)">&#10067;</span></p>
+					<p>3. Transparency Level Adjustment <span data-toggle="tooltip" title="Here you can adjust the transparency level in the upper image only. For instance, clicking the up arrow will increase transparency (decrease solid visibility) while clicking the down arrow will decrease transparency (increasing upper image visibility)">&#10067;</span></p>
 					<button type="button" id="transparency_button_down" class="btn btn-lg btn-default">&#8595;</button>&ensp;&ensp;&ensp;&ensp;
 					<button type="button" id="transparency_button_up" class="btn btn-lg btn-default">&#8593;</button>
 				</center>
@@ -59,10 +59,9 @@
 			<div class="col-md-6">
 				
 				<center>
-					<p>3. Result Image <span data-toggle="tooltip" title="This image will be the final result. This image is loaded when upper image is uploaded. For best results, please ensure base image is uploaded first than the upper image.">&#10067;</span></p>
-					<canvas height="200" width="200" height="200" width="200" style="margin-bottom:5px;" id="canvas"></canvas>
+					<p>4. Result Image <span data-toggle="tooltip" title="This image will be the final result. This image is loaded when upper image is uploaded. For best results, please ensure base image is uploaded first than the upper image.">&#10067;</span></p>
+					<canvas crossOrigin="Anonymous" height="200" width="200" height="200" width="200" style="margin-bottom:5px;" id="canvas"></canvas>
         			<br>
-					<button type="button" id="download_button" class="btn btn-lg btn-default">Download</button>
 					<button type="button" id="reload_button" class="btn btn-lg btn-default">New Image</button>
 				</center>
 			</div>	
@@ -85,6 +84,8 @@
 			<br>
 			For questions, please contact the developer at alexander.miller110@gmail.com
 		</div>
+		
+		<!-- grey placeholder image from: http://weknowyourdreamz.com/images/grey/grey-07.jpg -->
 	</body>
 
 	<!-- Javascript loading -->

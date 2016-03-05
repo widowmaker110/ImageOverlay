@@ -27,21 +27,39 @@ $(document).ready(function () {
 	var imagesLoaded = 0;
 
 	// Converts canvas to an image
-	function convertCanvasToImage(canvas) {
+	function convertCanvasToImage(c) {
 		var image = new Image();
 		image.setAttribute('crossOrigin', 'anonymous');
-		image.src = canvas.toDataURL("image/png");
+		image.src = c.toDataURL("image/png");
 		return image;
 	}
 
-	// download image from the internet
+	/**
+	* loadImage
+	* 
+	* Asynchronous task to get image from either a filepath or url
+	*
+	* @param {string} - url or filepath of the image desired
+	*/
 	function loadImage(src) {
 	    var img = new Image();
 	    img.onload = onload;
 	    img.src = src;
 		return img;
 	}
-	 
+	
+	/**
+	* scaleSize
+	*
+	* Takes an image and resizes proportionately to the max dimensions.
+	*
+	* @param {integer} - maxW is the maximum given width of the canvas
+	* @param {integer} - maxH is the maximum given height of the canvas
+	* @param {integer} - currW is the current image width to be resized
+	* @param {integer} - currH is the current image height to be resized
+	*
+	* @return image resized proportionately
+	*/
 	function scaleSize(maxW, maxH, currW, currH){
 
 		var ratio = currH / currW;
@@ -57,6 +75,12 @@ $(document).ready(function () {
 		return [currW, currH];
 	}
 	
+	/**
+	* drawOverlay
+	*
+	* This function takes the two images, granted they are both non-null
+	* and draws them onto the canvas with a given transparency level.
+	*/
 	function drawOverlay()
 	{
 		var maxHeight = img1.height;
@@ -75,11 +99,14 @@ $(document).ready(function () {
 		ctx.drawImage(img1, 0, 0, img1.height, img1.height * (img1.height/img1.width));
 		ctx.globalAlpha = transparency;
 		ctx.drawImage(img2, 0, 0, img1.height, img1.height * (img1.height/img1.width));
-		
-		// enable download option
-		$("#download_button").prop('disabled', false);
 	}
 	
+	/**
+	* readURL
+	*
+	* This function takes the url or filepath of an image
+	* and loads it into the given image variable to be used later.
+	*/
     function readURL(input, target) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -88,8 +115,8 @@ $(document).ready(function () {
                 $(target).attr('src', e.target.result);
 				if(target.indexOf("1") > -1)
 					img1 = loadImage(e.target.result);
-            	// on second load, draw the canvas
 				else {
+					// on second load, draw the canvas
 					img2 = loadImage(e.target.result);
 					drawOverlay();
 				}
@@ -99,20 +126,27 @@ $(document).ready(function () {
         }
     }
     
+	// ONLOAD
+	
+	// listener for the base image to be uploaded
     $("#file").change(function(){
         readURL(this, "#Image_1");
     });
+	
+	// listener for the upper image to be uploaded
 	$("#file2").change(function(){
 		readURL(this, "#Image_2");
 	});
 	
+	// initializes tooltips
 	$('[data-toggle="tooltip"]').tooltip(); 
 	
-	$("#download_button").prop('disabled', true);
+	// reloads the page to redo the process a new image if need be
 	$("#reload_button").click(function(){
 		location.reload();
 	});
 	
+	// Button to decrease transparency
 	$("#transparency_button_down").click(function(){
 		if(transparency >= 0.1){
 			console.log("true");
@@ -125,6 +159,7 @@ $(document).ready(function () {
 			$("#transparency_button_down").prop('disabled', true);
 	});
 	
+	// Button to increase transparency
 	$("#transparency_button_up").click(function(){
 		if(transparency < 1.0) {
 			console.log("true");
@@ -136,4 +171,11 @@ $(document).ready(function () {
 		else
 			$("#transparency_button_up").prop('disabled', true);
 	});
+	
+	// set the canvas to the same grey image as the <img> elements
+	base_image = new Image();
+	base_image.src = 'grey-07.jpg';
+	base_image.onload = function(){
+    ctx.drawImage(base_image, 0, 0);
+  }
 });

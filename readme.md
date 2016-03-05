@@ -6,6 +6,7 @@ rootfolder/
         | --- index.html         <-- Home file to open when using the application
         | --- /stylesheets       <-- All of the CSS files for the website
         | --- /js                <-- All of the JavaScript files for the website
+        | --- /images            <-- All images supporting the images for the website
 ````
 ## Author
 Alexander Miller

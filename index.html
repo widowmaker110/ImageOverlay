@@ -3,7 +3,7 @@
 	<head>
 		<title>Image Overlay</title>
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">		
 	</head>
 
 	<body>
@@ -14,7 +14,6 @@
 				<div class="jumbotron">
 					<h1 class="jumbotronHeading">Image Overlay Program</h1>
 		    		<p class="jumbotronHeading">This program converts two images into one by overlaying the top layer on top of the buttom image.</p>
-					<p class="jumbotronHeading">For questions, please contact the developer at alexander.miller110@gmail.com</p>
 				</div>
 			</div>
 		
@@ -49,28 +48,42 @@
 		
 		
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-6">
+				<center>
+					<p>Transparency Level Adjustment <span data-toggle="tooltip" title="Here you can adjust the transparency level in the upper image only. For instance, clicking the up arrow will increase transparency (decrease solid visibility) while clicking the down arrow will decrease transparency (increasing upper image visibility)">&#10067;</span></p>
+					<button type="button" id="transparency_button_down" class="btn btn-lg btn-default">&#8595;</button>&ensp;&ensp;&ensp;&ensp;
+					<button type="button" id="transparency_button_up" class="btn btn-lg btn-default">&#8593;</button>
+				</center>
+			</div>
+			
+			<div class="col-md-6">
 				
 				<center>
 					<p>3. Result Image <span data-toggle="tooltip" title="This image will be the final result. This image is loaded when upper image is uploaded. For best results, please ensure base image is uploaded first than the upper image.">&#10067;</span></p>
-					<canvas height="200" width="200" style="margin-bottom:5px;" id="canvas"></canvas>
+					<canvas height="200" width="200" height="200" width="200" style="margin-bottom:5px;" id="canvas"></canvas>
         			<br>
 					<button type="button" id="download_button" class="btn btn-lg btn-default">Download</button>
+					<button type="button" id="reload_button" class="btn btn-lg btn-default">New Image</button>
 				</center>
 			</div>	
 		</div>
+		
 		
 		<br>
 		<br>
 		<br>
 		
 		<div class="well">
-			<p>This project was more easily made with these incredible resources:</p>
+			This project was more easily made with these incredible resources:
 			<a href="http://www.ajaxblender.com/howto-resize-image-proportionally-using-javascript.html" target="_blank">Ajaxblender</a>
 			&#8226; <a href="http://www.stackoverflow.com" target="_blank">Stackoverflow</a>
 			&#8226; <a href="http://jsbin.com/imonub/7/edit?html,css,output" target="_blank">Jsbin</a>
 			&#8226; <a href="http://getbootstrap.com/" target="_blank">Twitter Boostrap</a>
 			&#8226; <a href="https://jquery.com/" target="_blank">JQuery</a>
+			&#8226; <a href="https://www.github.com" target="_blank">GitHub</a>
+			<br>
+			<br>
+			For questions, please contact the developer at alexander.miller110@gmail.com
 		</div>
 	</body>
 

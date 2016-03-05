@@ -19,6 +19,9 @@ $(document).ready(function () {
 	// Images
 	var img1;
 	var img2;
+	
+	// transparency value
+	var transparency = 0.5;
 
 	// Counter
 	var imagesLoaded = 0;
@@ -70,7 +73,7 @@ $(document).ready(function () {
 				
 		// finally, draw overlay
 		ctx.drawImage(img1, 0, 0, img1.height, img1.height * (img1.height/img1.width));
-		ctx.globalAlpha = 0.5;
+		ctx.globalAlpha = transparency;
 		ctx.drawImage(img2, 0, 0, img1.height, img1.height * (img1.height/img1.width));
 		
 		// enable download option
@@ -106,4 +109,31 @@ $(document).ready(function () {
 	$('[data-toggle="tooltip"]').tooltip(); 
 	
 	$("#download_button").prop('disabled', true);
+	$("#reload_button").click(function(){
+		location.reload();
+	});
+	
+	$("#transparency_button_down").click(function(){
+		if(transparency >= 0.1){
+			console.log("true");
+			transparency = transparency - 0.1;
+			$("#transparency_button_down").prop('disabled', false);
+			drawOverlay();
+			$("#transparency_button_up").prop('disabled', false);
+		}
+		else
+			$("#transparency_button_down").prop('disabled', true);
+	});
+	
+	$("#transparency_button_up").click(function(){
+		if(transparency < 1.0) {
+			console.log("true");
+			$("#transparency_button_up").prop('disabled', false);
+			transparency = transparency + 0.1;
+			drawOverlay();
+			$("#transparency_button_down").prop('disabled', false);
+		}
+		else
+			$("#transparency_button_up").prop('disabled', true);
+	});
 });

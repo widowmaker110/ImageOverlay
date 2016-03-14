@@ -228,7 +228,11 @@ function convertImgToBase64(url, callback, outputFormat){
 		var image = new Image();
 		image.src = src;
 		img2 = image;
-		drawOverlay();
+		
+		img1.src = $("#Image_1").prop("src");
+		img1.onload = function(){
+			drawOverlay();
+		}
 	});
 	
 	$("#saveImage").click(function(){
@@ -272,5 +276,5 @@ function convertImgToBase64(url, callback, outputFormat){
 	base_image.src = 'grey-07.jpg';
 	base_image.onload = function(){
 		ctx.drawImage(base_image, 0, 0);
-	}		
+	}	
 });

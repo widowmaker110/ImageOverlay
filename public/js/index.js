@@ -100,6 +100,8 @@ $(document).ready(function () {
 	*/
 	function drawOverlay()
 	{
+		img1=loadImage($('#Image_1').attr('src'));
+		
 		var maxHeight = img1.height;
 		var maxWidth = img1.width;
 		
@@ -228,11 +230,7 @@ function convertImgToBase64(url, callback, outputFormat){
 		var image = new Image();
 		image.src = src;
 		img2 = image;
-		
-		img1.src = $("#Image_1").prop("src");
-		img1.onload = function(){
-			drawOverlay();
-		}
+		drawOverlay();
 	});
 	
 	$("#saveImage").click(function(){
